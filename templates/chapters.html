@@ -1,0 +1,23 @@
+<html>
+<body>
+<h2>List of chapters</h2>
+<hr>
+<ul>
+    {% for ch in chapters %}
+        <li>{{ ch.theme }} ({{ ch.article_count }})---({{ ch.article__count }})</li>
+        <h2>ТУТ МЫ ВЫВЕДЕМ СТАТЬИ ЭТОГО РАЗДЕЛА</h2>
+            <ul>
+                {% for ar in ch.actual.all %}
+                    <li><a href="{{ ar.pk }}" >{{ ar.title }}</a></li>
+                {% endfor %}
+            </ul>
+{#        <h2>А ТУТ МЫ ВРОДЕ КАК ПОКАЖЕМ СТАТЬИ, ПРИНАДЛЕЖАВШИЕ РАЗДЕЛУ РАНЕЕ</h2>#}
+{#        <ul>#}
+{#            {% for ar in ch.old.all %}#}
+{#                <li>{{ ar.title }}</li>#}
+{#            {% endfor %}#}
+{#        </ul>#}
+    {% endfor %}
+</ul>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<h2>{{ article.title }}</h2>
+<h2>{{ article.article_text }}</h2>
+<h2>{{ article.time|date:"Y/m/d H:i:s" }}</h2>
+<h2>{{ article.pk }}</h2>
+<h2>{{ article.chapter }}</h2>
+<h2>{{ article.chapter.id }}</h2>
+<h2>{{ article.comment }}</h2>
+
+
+<p> комментарии к {{ article.title }}</p>
+{% for com in comments %}
+    <hr/>
+    <p> {{ com.comment_text }}</p>
+    <p> {{ com.user }}</p>
+    <p> {{ com.article }}</p>
+    <hr/>
+{% endfor %}
+{#<form action="." method="POST" >#}
+{#    {% csrf_token %}#}
+{#    <input type="text" name="new_comment" >#}
+{#    <button>SEND COMMENT!</button>#}
+{#</form>#}
+{#<br/>#}
+{{ form1111.errors }}
+<form action="." method="POST">
+    {% csrf_token %}
+    {% for x in form1111 %}
+        {{ x.label_tag  }}{{ x }}{{ x.help_text }}
+        {%  for error in x.errors %}
+            <div>{{ error }}</div>
+        {%  endfor %}
+
+    {%  endfor %}
+
+    <button>SEND COMMENT!</button>
+</form>
+
+</body>
+</html>
